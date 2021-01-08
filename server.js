@@ -10,12 +10,18 @@ const httpError = (res, status, message) => {
 
 http.createServer(async (req, res) => {
   const url = req.url === '/' ? '/index.html' : req.url;
-  const path = `./static${url}`;
-  try {
-    const data = await fs.promises.readFile(path);
-    console.log(path);
-    res.end(data);
-  } catch (err) {
-    httpError(res, 404, 'File is not found');
+  const [ first, second ] = url.substring(1).split('/');
+  if (first === 'screens') {
+    const path = `./screens/${second}`;
+    const screen = await require(path);
+    res.end(JSON.stringify(screen));
+  } else {
+    const path = `./static/${first}`;
+    try {
+      const data = await fs.promises.readFile(path);
+      res.end(data);
+    } catch (err) {
+      httpError(res, 404, 'File is not found');
+    }
   }
 }).listen(8000);
