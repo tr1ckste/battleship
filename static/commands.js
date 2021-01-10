@@ -22,5 +22,5 @@ const comms = {
   fill: () => ctx.fill(),
   beginPath: () => ctx.beginPath(),
   closePath: () => ctx.closePath(),
-  setLogin: login => state.login = login, 
+  setLogin: login => state.login = login,
 };

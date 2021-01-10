@@ -8,7 +8,7 @@ const httpError = (res, status, message) => {
   res.end(`"${message}"`);
 };
 
-const receiveLogin = async (req) => new Promise((resolve) => {
+const receiveLogin = async req => new Promise(resolve => {
   const body = [];
   req.on('data', (chunk) => {
     body.push(chunk);

@@ -7,7 +7,7 @@ const margin = 10;
 const state = {
   screen: null,
   login: null
-}
+};
 
 const getScreen = async url => {
   const response = await fetch(url, {

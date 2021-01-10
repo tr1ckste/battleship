@@ -13,6 +13,8 @@ for (const screen of [loggedOut, loggedIn]) {
     '50px serif'] ]);
   createButton(screen, 0, 0, 100, 30,
     'Back', 'screens/initial.js');
+  createButton(screen, centerX - 100, 100, 100, 50,
+    '')
 }
 
 module.exports = login => {
