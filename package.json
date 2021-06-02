@@ -9,6 +9,7 @@
   "author": "nikitavasilinenko@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "eslint": "^7.15.0"
+    "eslint": "^7.15.0",
+    "sqlite3": "^5.0.2"
   }
 }

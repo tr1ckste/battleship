@@ -8,22 +8,31 @@ const buttonWidth = 270;
 const buttonHeight = 50;
 
 const startX = (width - buttonWidth) / 2;
+const startY = 50;
+const stepY = 100;
+
+const x = 750;
+const y = 0;
+const step = 30;
+const widthNext = 150;
+const heightNext = 30;
+
 
 for (const screen of [loggedIn, loggedOut]) {
-  createButton(screen, startX, 50, buttonWidth, buttonHeight,
+  createButton(screen, startX, startY, buttonWidth, buttonHeight,
     'New room', 'screens/newRoom.js');
-  createButton(screen, startX, 150, buttonWidth, buttonHeight,
+  createButton(screen, startX, startY + stepY, buttonWidth, buttonHeight,
     'Rooms', 'screens/rooms.js');
-  createButton(screen, startX, 250, buttonWidth, buttonHeight,
+  createButton(screen, startX, startY + stepY, buttonWidth, buttonHeight,
     'Stats', 'screens/stats.js');
 }
 
-createButton(loggedIn, 750, 0, 150, 30,
+createButton(loggedIn, x, y, widthNext, heightNext,
   'logout', 'screens/initial.js');
 
-createButton(loggedOut, 750, 0, 150, 30,
+createButton(loggedOut, x, y, widthNext, heightNext,
   'Register', 'screens/registerLogin.js');
-createButton(loggedOut, 750, 30, 150, 30,
+createButton(loggedOut, x, y + step, widthNext, heightNext,
   'Login', 'screens/login.js');
 
 module.exports = login => {

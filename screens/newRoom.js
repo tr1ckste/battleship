@@ -7,10 +7,15 @@ const loggedIn = new Screen();
 const loggedOut = new Screen();
 const centerX = width / 2;
 
+const x = 0;
+const y = 0;
+const buttonWidth = 100;
+const height = 30;
+
 for (const screen of [loggedIn, loggedOut]) {
-  createButton(screen, 0, 0, 100, 30,
+  createButton(screen, x, y, buttonWidth, height,
     'Back', 'screens/initial.js');
-  createButton(loggedOut, 0, 0, 100, 30,
+  createButton(loggedOut, x, y, buttonWidth, height,
     'Back', 'screens/initial.js');
 }
 
