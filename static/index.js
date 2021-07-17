@@ -6,7 +6,10 @@ const margin = 10;
 
 const state = {
   screen: null,
-  login: null
+  login: null,
+  inputField: null,
+  inputResult: '',
+  carriage: null
 };
 
 const getScreen = async url => {
@@ -26,6 +29,13 @@ state.screen = getScreen(url);
 const renderScreen = screen => {
   ctx.clearRect(0, 0, 900, 600);
   const { instructions } = screen;
+  if (screen.inputField) {
+    state.inputField = screen.inputField;
+    state.carriage = screen.inputField[0];
+  } else {
+    state.inputField = null;
+    state.carriage = null;
+  }
   for (const instruction of instructions) {
     const comm = comms[instruction.name];
     comm(...instruction.args);
@@ -47,6 +57,30 @@ canvas.addEventListener('click', event => {
         state.screen = screen;
         renderScreen(state.screen);
       });
+    }
+  }
+});
+
+document.addEventListener('keydown', event => {
+  console.log(`Key pressed: ${event.key}`);
+  const { inputField, carriage } = state;
+  const { key } = event;
+  if (inputField) {
+    const [ y, size ] = inputField;
+    if (alphabetLetters.includes(key.toLowerCase()))
+    {
+      comms.text(key, carriage, y, `${size}px serif`);
+      state.carriage += size;
+      state.inputResult += key;
+    } else if (key == 'Backspace' && state.inputResult.length > 0) {
+      state.carriage -= size;
+      ctx.fillStyle = "white";
+      ctx.fillRect(carriage - 1.5 * size, y - 1.5 * size, size, size * 2);
+      ctx.fillStyle = "black";
+      state.inputResult = state.inputResult.slice(0, state.inputResult.length - 1);
+      console.log(state.inputResult);
+    } else if (key == 'Enter') {
+      
     }
   }
 });

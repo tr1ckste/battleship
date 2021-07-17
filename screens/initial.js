@@ -23,7 +23,7 @@ for (const screen of [loggedIn, loggedOut]) {
     'New room', 'screens/newRoom.js');
   createButton(screen, startX, startY + stepY, buttonWidth, buttonHeight,
     'Rooms', 'screens/rooms.js');
-  createButton(screen, startX, startY + stepY, buttonWidth, buttonHeight,
+  createButton(screen, startX, startY + 2 * stepY, buttonWidth, buttonHeight,
     'Stats', 'screens/stats.js');
 }
 

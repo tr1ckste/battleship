@@ -20,6 +20,9 @@ class Screen {
   constructor() {
     this.buttons = [];
     this.instructions = [];
+    this.inputField = null;
+    this.inputResult = '';
+    this.carriage = null;
   }
   addButton(arr) {
     this.buttons.push(new Button(arr));

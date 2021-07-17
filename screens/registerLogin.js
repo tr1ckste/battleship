@@ -20,12 +20,11 @@ const emptyWidth = 100;
 const emptyHeight = 100;
 
 for (const screen of [loggedOut, loggedIn]) {
+  screen.inputField = [200, 30];
   screen.addInstruction([ 'text', [ text, centerX, textY,
     '50px serif'] ]);
   createButton(screen, backX, backY, backWidth, backHeight,
     'Back', 'screens/initial.js');
-  createButton(screen, emptyX, emptyY, emptyWidth, emptyHeight,
-    '');
 }
 
 module.exports = login => {
