@@ -67,20 +67,12 @@ document.addEventListener('keydown', event => {
   const { key } = event;
   if (inputField) {
     const [ y, size ] = inputField;
-    if (alphabetLetters.includes(key.toLowerCase()))
-    {
-      comms.text(key, carriage, y, `${size}px serif`);
-      state.carriage += size;
-      state.inputResult += key;
-    } else if (key == 'Backspace' && state.inputResult.length > 0) {
-      state.carriage -= size;
-      ctx.fillStyle = "white";
-      ctx.fillRect(carriage - 1.5 * size, y - 1.5 * size, size, size * 2);
-      ctx.fillStyle = "black";
-      state.inputResult = state.inputResult.slice(0, state.inputResult.length - 1);
-      console.log(state.inputResult);
-    } else if (key == 'Enter') {
-      
+    for (const obj of keyboardHandlers) {
+      const { keys, handler } = obj;
+      if (keys.includes(key)) {
+        handler({ key, y, size, carriage, state });
+        break;
+      }
     }
   }
 });
